@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<meta charset="utf-8">
+	<title>
+		{{ TEL_ID }} Nightly Report
+	</title>
+
+
+
+	<style>
+
+	body
+	{
+		background-color:darkcyan;
+		font-weight:bold;
+
+	}
+	span.top
+	{
+		position:absolute;
+		border: 1px solid black;
+		padding: 0px 5px 0px 5px;
+	}
+	div.top
+	{
+		padding-bottom:20px;
+	}
+	div
+	{
+		padding:10px;
+	}
+	table, td, th
+	{
+		border:1px solid black;
+	}
+	td, th
+	{
+		padding:5px
+	}
+
+	table
+	{
+		margin: auto;
+		width: 50%;
+	}
+	textarea
+	{
+		display:block;
+		margin-left:auto;
+		margin-right:auto;
+	}
+
+	p#pdesc
+	{
+		text-align:center;
+		padding-bottom:0px;
+		margin-bottom:0px;
+	}
+	div#container
+	{
+
+		margin: auto;
+		width: 75%;
+	}
+	input#submit_button
+	{
+		display:block;
+		margin:auto;
+		text-align:center;
+	}
+	#emails
+	{
+		text-align:center;
+	}
+	.user_info
+	{
+		border:none;
+	}
+
+	</style>
+
+</head>
+<body>
+		<div class="top">
+		<span class="top" id="Date" style="left:20px">Date: {{ date }}</span>
+		<span class="top" id="moon_phase" style="left:50%;margin-left:-20px"> Moon Phase {{ moon_age }}</span>
+		<span class="top" id="avail_hours" style="right:20px"> Available Hours {{ avail_hours }}</span>
+		</div>
+		<div id="container">
+			<form action="{{ url_for('send_nr') }}", method="POST">
+			<input type="hidden" name="date" value="{{ date }}"/>
+			<input type="hidden" name="moon_age" value="{{ moon_age }}"/>
+			<input type="hidden" name="avail_hours" value="{{ avail_hours }}"/>
+			<div id="info">
+				<table id="info" class="user_info">
+				<tr><th class="user_info">Observer(s)</th><th class="user_info">Instrument</th><th class="user_info">Operator</th></tr>
+				<tr>
+				<td class="user_info" ><input type="text" name="observer"></input></td>
+				<td class="user_info" ><input type="text" name="instrument"></input></td>
+				<td class="user_info" ><input type="text" name="operator"></input></td>
+				</tr>
+				</table>
+			</div>
+			<div id="time_loss">
+				<table>
+					<tr><th></th><th>Weather</th><th>Telescope</th><th>Instrument</th><th>Computer</th></tr>
+					<tr>
+						<td>Hours Lost To</td>
+						<td><input type="text" name="loss_weather" size="6" /></td>
+						<td><input type="text" name="loss_telescope"  size="6" /></td>
+						<td><input type="text" name="loss_instrument"  size="6" /></td>
+						<td><input type="text" name="loss_computer"  size="6" /></td>
+					<tr>
+				</table>
+
+			</div>
+			<div id="conditions">
+				<table>
+					<tr>
+						<th></th>
+						<th>Time (hh:mm)</th>
+						<th>Temperature (&deg F)</th>
+						<th>Humidity (%)</th>
+						<th>Wind Velocity (MPH)</th>
+						<th>Wind Direction</th>
+						<th>Seeing (Arc Secs)</th>
+						
+					</tr>
+					<tr>
+						<td>Open</td>
+						<td><input type="text" name="open_time" size="6" /></td>
+						<td><input type="text" name="open_temp"  size="6" /></td>
+						<td><input type="text" name="open_humid"  size="6" /></td>
+						<td><input type="text" name="open_wind_vel"  size="6" /></td>
+						<td><input type="text" name="open_wind_dir"  size="6" /></td>
+						<td><input type="text" name="open_seeing"  size="6" /></td>
+
+
+				  </tr>
+
+					<tr>
+						<td>Close</td>
+						<td><input type="text" name="close_time" size="6" /></td>
+						<td><input type="text" name="close_temp"  size="6" /></td>
+						<td><input type="text" name="close_humid"  size="6" /></td>
+						<td><input type="text" name="close_wind_vel"  size="6" /></td>
+						<td><input type="text" name="close_wind_dir"  size="6" /></td>
+						<td><input type="text" name="close_seeing"  size="6" /></td>
+
+				  </tr>
+
+				</table>
+			</div>
+			<div id="description">
+				<p id="pdesc">Description</p>
+				<textarea name=description cols=72 rows=6 >
+				</textarea>
+			</div>
+			<div id="emails">
+			<p id="emails">Other emails</p>
+			<input type="email" name="email1"/>,
+			<input type="email" name="email2"/>,
+			<input type="email" name="email3"/>
+			</div>
+			<div id="submit">
+				<input type="submit" id="submit_button"/>
+			</div>
+		</form>
+		</div>
+
+</body>
+
+
+</html>

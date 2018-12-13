@@ -1,0 +1,83 @@
+<head>
+	<title>
+		Submitted Night Report	
+	</title>
+	<style>
+		td, th
+		{
+			border:solid 1px black;
+			text-align:center;
+		}
+		div#time_loss, div#conditions, table
+		{
+			margin:auto;
+		}
+		p
+		{
+			text-align:center;
+		}
+	</style>
+</head>
+	<body>	
+		<div id="Date">Date: {{ date }}</div>
+		<div id="moon_phase"> Moon Phase {{ moon_age }}</div>
+		<div id="avail_hours"> Available Hours {{ avail_hours }}</div>
+		<div id="container">
+
+			<div id="time_loss">
+				<table>
+					<tr><th></th><th>Weather</th><th>Telescope</th><th>Instrument</th><th>Computer</th></tr>
+					<tr>
+						<td>Hours Lost To</td>
+						<td>{{ loss_weather }}</td>
+						<td>{{ loss_telescope }}</td>
+						<td>{{ loss_instrument }}</td>
+						<td>{{ loss_computer  }}</td>
+					<tr>
+				</table>
+
+			</div>
+
+			<div id="conditions">
+				<table>
+					<tr>
+						<th></th>
+						<th>Time (hh:mm)</th>
+						<th>Temperature (&deg F)</th>
+						<th>Humidity (%)</th>
+						<th>Wind Velocity (MPH)</th>
+						<th>Wind Direction</th>
+						<th>Seeing (Arc Secs)</th>
+						
+					</tr>
+					<tr>
+						<td>Open</td>
+						<td>{{ open_time  }}</td>
+						<td>{{ open_temp  }}</td>
+						<td>{{ open_humid  }}</td>
+						<td>{{ open_wind_vel  }}</td>
+						<td>{{ open_wind_dir  }}</td>
+						<td>{{ open_seeing  }}</td>
+
+
+				  </tr>
+
+					<tr>
+						<td>Close</td>
+
+						<td>{{ close_time }}</td>
+						<td>{{ close_temp  }}</td>
+						<td>{{ close_humid  }}</td>
+						<td>{{ close_wind_vel  }}</td>
+						<td>{{ close_wind_dir  }}</td>
+						<td>{{ close_seeing  }}</td>
+
+				  </tr>
+				
+				</table>
+			</div>
+			<p>
+			{{ description}}
+			</p>
+
+	</body>
