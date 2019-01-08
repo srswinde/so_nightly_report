@@ -23,9 +23,9 @@ def send_email(formdata):
     subprocess.run(email_cmds, input="<h1>nightreport</h1>")
 
 
-
-
-
+@app.route("/")
+def home():
+    return "ROOT"
 
 
 @app.route("/fool", methods=['GET', 'POST'])
@@ -112,9 +112,5 @@ def js():
 
 
 if __name__ == "__main__":
-    app.run( host="0.0.0.0", port=8888, debug=True )
-
-
-
-
+    app.run( host="0.0.0.0", port=8888 )
 
